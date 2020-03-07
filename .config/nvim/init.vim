@@ -31,6 +31,7 @@ set shiftwidth=4
 set number
 set nowrap
 set incsearch
+set colorcolumn=80
 colorscheme gruvbox
 
 " Настройки Vim-Airline
