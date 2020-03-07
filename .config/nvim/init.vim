@@ -77,6 +77,8 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Better work of enter key
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -96,6 +98,10 @@ endfunction
 
 " coc extensions
 let g:coc_global_extensions = [
+            \ 'coc-css',
+            \ 'coc-html',
+            \ 'coc-javascript',
+            \ 'coc-pairs',
             \ 'coc-python',
             \ 'coc-dictionary',
             \ 'coc-snippets', ]
@@ -113,7 +119,6 @@ nmap <leader>rn <Plug>(coc-rename)
 let NERDTreeQuitOnOpen=0 " Don't close NERDTree on file open
 " Autoclose NERDTree, if NERDTree window is the latest window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd VimEnter * NERDTree " Enable NERDTree on startup
 
 " —————————————————Mappings———————————————————
 map <F4> :NERDTreeToggle<CR>
