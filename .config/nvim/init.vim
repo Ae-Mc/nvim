@@ -101,7 +101,6 @@ endfunction
 let g:coc_global_extensions = [
             \ 'coc-css',
             \ 'coc-html',
-            \ 'coc-javascript',
             \ 'coc-pairs',
             \ 'coc-python',
             \ 'coc-dictionary',
