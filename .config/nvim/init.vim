@@ -1,26 +1,41 @@
 call plug#begin(stdpath('data') . '/plugged')
+
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin' " A plugin of NERDTree showing git status
-"Adds file type icons to Vim plugins such as: NERDTree, vim-airline, CtrlP, unite, Denite, lightline, vim-startify and many more
+" A plugin of NERDTree showing git status
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" Adds file type icons to Vim plugins such as: NERDTree, vim-airline, CtrlP,
+" unite, Denite, lightline, vim-startify and many more
 Plug 'ryanoasis/vim-devicons'
 Plug 'Shougo/neoinclude.vim'
-" Plug 'jsfaint/coc-neoinclude'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Fuzzy search through the files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
+" Indent text object
+Plug 'michaeljsmith/vim-indent-object'
+
+" Better language packs
+Plug 'sheerun/vim-polyglot'
+
+" Window chooser
+Plug 't9md/vim-choosewin'
+
 " Theme
 Plug 'morhetz/gruvbox'
 " Tagbar
 Plug 'liuchengxu/vista.vim'
+Plug 'mhinz/vim-startify'
+
 call plug#end()
 "
 " ============================================
 " =            Interface settings            =
 " ============================================
 "
+
+" —————————————Pure vim settings——————————————
 if has("gui_running")
 	set guioptions=rb
 endif
@@ -29,12 +44,15 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set number
+set relativenumber
 set nowrap
 set incsearch
 set colorcolumn=80
-colorscheme gruvbox
 
-" Настройки Vim-Airline
+colorscheme gruvbox
+syntax on
+
+" ————————————Vim-Airline settings————————————
 set laststatus=2
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
@@ -63,14 +81,14 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
-" —————————————————coc config—————————————————
 
-" Some servers have issues with backup files, see #649.
+" Some coc servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
 
 " TextEdit might fail if hidden is not set.
 set hidden
+" —————————————————coc config—————————————————
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -101,10 +119,11 @@ endfunction
 let g:coc_global_extensions = [
             \ 'coc-css',
             \ 'coc-html',
+            \ 'coc-json',
             \ 'coc-pairs',
             \ 'coc-python',
-            \ 'coc-dictionary',
-            \ 'coc-snippets', ]
+            \ 'coc-snippets',
+            \ 'coc-dictionary', ]
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -115,10 +134,19 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
+" Go to definition
+map gd :call CocAction('jumpDefinition')<CR>
+
 " ————————————NERDTree settings———————————————
 let NERDTreeQuitOnOpen=0 " Don't close NERDTree on file open
 " Autoclose NERDTree, if NERDTree window is the latest window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" —————————————Other settings—————————————————
+" Overlay feature
+let g:choosewin_overlay_enable = 1
 " —————————————————Mappings———————————————————
 map <F4> :NERDTreeToggle<CR>
+" Vista tagbar toggle
+map <F3> :Vista!!<CR>
+nmap - <Plug>(choosewin)
