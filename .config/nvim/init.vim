@@ -1,32 +1,41 @@
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'scrooloose/nerdtree'
-" A plugin of NERDTree showing git status
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" Adds file type icons to Vim plugins such as: NERDTree, vim-airline, CtrlP,
-" unite, Denite, lightline, vim-startify and many more
-Plug 'ryanoasis/vim-devicons'
-Plug 'Shougo/neoinclude.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Fuzzy search through the files
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'scrooloose/nerdtree'
+    " Adds file type icons to Vim plugins such as: NERDTree, vim-airline, CtrlP,
+    " unite, Denite, lightline, vim-startify and many more
+    Plug 'ryanoasis/vim-devicons'
 
-" Indent text object
-Plug 'michaeljsmith/vim-indent-object'
+    " Autocomplete
+    Plug 'Shougo/neoinclude.vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 
-" Better language packs
-Plug 'sheerun/vim-polyglot'
+    " Airline
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
-" Window chooser
-Plug 't9md/vim-choosewin'
+    " CtrlP fuzzy search
+    Plug 'ctrlpvim/ctrlp.vim'
+    " Indent text object
+    Plug 'michaeljsmith/vim-indent-object'
 
-" Theme
-Plug 'morhetz/gruvbox'
-" Tagbar
-Plug 'liuchengxu/vista.vim'
-Plug 'mhinz/vim-startify'
+    " Better language packs
+    Plug 'sheerun/vim-polyglot'
+
+    " Window chooser
+    Plug 't9md/vim-choosewin'
+
+    " Theme
+    Plug 'morhetz/gruvbox'
+
+    " Tagbar
+    Plug 'liuchengxu/vista.vim'
+    Plug 'mhinz/vim-startify'
+
+    " Git integration
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
+    " A plugin of NERDTree showing git status
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 "
@@ -48,6 +57,7 @@ set relativenumber
 set nowrap
 set incsearch
 set colorcolumn=80
+set cursorline
 
 colorscheme gruvbox
 syntax on
