@@ -19,7 +19,7 @@ on windows and
 + [Airline][5] statusbar
 + [Startify][6] menu on nvim startup
 + [Gitgutter][7] - git showing changes
-+ [fugitive][8] git integration
++ [Fugitive][8] git integration
 
 [1]: <https://github.com/neovim/neovim/releases/latest>
 [2]: <https://github.com/daa84/neovim-gtk>
