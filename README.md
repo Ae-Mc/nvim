@@ -1,6 +1,3 @@
-# Table of contents <!-- omit in toc -->
-${toc}
-
 # Introduction
 
 It's my Neovim config, configured mainly for python
@@ -63,31 +60,3 @@ on windows and
 
 4. Start nvim and execute ``:PlugInstall``
 5. Enjoy!
-asd
-
-asdasd
-
-
-asdask
-jka
-
-
-laslkdal
-
-
-kalskd
-laskkdlaskd
-
-
-
-
-
-
-maslmdlaml
-kmal
-
-kmaskdlamskldmlams
-
-990192
-
-askdlmakd
