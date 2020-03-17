@@ -47,9 +47,10 @@ call plug#begin(path_to_plug_dir)
     Plug 'Xuyuanp/nerdtree-git-plugin'
 
     " Markdown preview
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 call plug#end()
+
 "
 " ============================================
 " =            Interface settings            =
@@ -70,18 +71,22 @@ set nowrap
 set incsearch
 set colorcolumn=80
 set cursorline
+set ttyfast                " Faster redrawing.
+set lazyredraw             " Only redraw when necessary.
+set laststatus=2
 
 colorscheme gruvbox
 syntax on
 
 " ————————————Vim-Airline settings————————————
-set laststatus=2
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
+" Echo markdown server url
 let g:mkdp_echo_preview_url = 1
+
 "
 " ============================================
 " =             General settings             =
