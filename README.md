@@ -28,4 +28,4 @@ on windows and
 
 [1]: <https://github.com/neovim/neovim/releases/latest>
 [2]: <https://github.com/daa84/neovim-gtk>
-[3]: <https://github.com/neoclide/coc.mvim>
+[3]: <https://github.com/neoclide/coc.nvim>
