@@ -1,3 +1,6 @@
+# Table of contents <!-- omit in toc -->
+${toc}
+
 # Introduction
 
 It's my Neovim config, configured mainly for python
@@ -30,13 +33,20 @@ on windows and
 [7]: <https://github.com/airblade/vim-gitgutter>
 [8]: <https://github.com/tpope/vim-fugitive>
 
+# Screenshots
+
+#### Windows
+
+![Windows Screenshot 1](https://user-images.githubusercontent.com/43097289/76864602-46f41200-6859-11ea-9502-c0fdc6ae10be.png)
+![Windows Screenshot 2](https://user-images.githubusercontent.com/43097289/76865751-14e3af80-685b-11ea-9b4d-ba92e879baba.png)
+
 # Installation
 
 1. Clone this repository:
 
         git clone https://github.com/Ae-Mc/nvim
 
-1. Copy ``.config/nvim`` to your config folder
+2. Copy ``.config/nvim`` to your config folder
 (~\AppData\Local on Windows, ~/.config on Linux):
 
         // For Linux
@@ -44,12 +54,40 @@ on windows and
         // For Windows
         cp nvim\.config\nvim %LOCALAPPDATA%\nvim
 
-1. Install vim-plug plugin manager:
+3. Install vim-plug plugin manager:
 
         // For Linux
         ./nvim/installVimPlug.sh
         // For Windows
         powershell nvim/installVimPlug.ps1
 
-1. Start nvim and execute ``:PlugInstall``
-1. Enjoy!
+4. Start nvim and execute ``:PlugInstall``
+5. Enjoy!
+asd
+
+asdasd
+
+
+asdask
+jka
+
+
+laslkdal
+
+
+kalskd
+laskkdlaskd
+
+
+
+
+
+
+maslmdlaml
+kmal
+
+kmaskdlamskldmlams
+
+990192
+
+askdlmakd
