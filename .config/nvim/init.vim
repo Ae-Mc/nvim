@@ -1,4 +1,13 @@
-call plug#begin(stdpath('data') . '/plugged')
+let path_to_undofiles = expand(stdpath('data') . '/undofiles')
+let path_to_ctrlp_cache = expand(stdpath('data') . '/cache')
+let path_to_plug_dir = expand(stdpath('data') . '/plugged')
+let path_to_backup_dir = expand(stdpath('data') . '/backups')
+call mkdir(path_to_undofiles, 'p')
+call mkdir(path_to_ctrlp_cache, 'p')
+call mkdir(path_to_plug_dir, 'p')
+call mkdir(path_to_backup_dir, 'p')
+
+call plug#begin(path_to_plug_dir)
 
     Plug 'scrooloose/nerdtree'
     " Adds file type icons to Vim plugins such as: NERDTree, vim-airline, CtrlP,
@@ -82,7 +91,9 @@ set splitright
 set splitbelow
 " Save undo history after file closing
 set undofile
-set undodir=~/.config/nvim/undofiles
+let &undodir = path_to_undofiles
+set backup
+let &backupdir = path_to_backup_dir
 " Разрешаем использовать <backspace> в insert mode
 set backspace=indent,eol,start
 
@@ -155,6 +166,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " —————————————Other settings—————————————————
 " Overlay feature
 let g:choosewin_overlay_enable = 1
+let g:ctrlp_cache_dir = path_to_ctrlp_cache
 " —————————————————Mappings———————————————————
 map <F4> :NERDTreeToggle<CR>
 " Vista tagbar toggle
