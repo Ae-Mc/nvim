@@ -37,6 +37,9 @@ call plug#begin(stdpath('data') . '/plugged')
     " A plugin of NERDTree showing git status
     Plug 'Xuyuanp/nerdtree-git-plugin'
 
+    " Markdown preview
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
 call plug#end()
 "
 " ============================================
@@ -69,6 +72,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
+let g:mkdp_echo_preview_url = 1
 "
 " ============================================
 " =             General settings             =
