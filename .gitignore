@@ -1,7 +1,8 @@
 *
-!/nvim/init.vim
-!/nvim/ginit.vim
-!/nvim/coc-settings.json
+!nvim
+!nvim/init.vim
+!nvim/ginit.vim
+!nvim/coc-settings.json
 !.gitignore
 !installVimPlug*
 !README.md
