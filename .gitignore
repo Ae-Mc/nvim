@@ -1,2 +1,7 @@
-*.mypy_cache*
-.config/nvim/undofiles
+*
+!/nvim/init.vim
+!/nvim/ginit.vim
+!/nvim/coc-settings.json
+!.gitignore
+!installVimPlug*
+!README.md

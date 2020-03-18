@@ -43,13 +43,13 @@ on windows and
 
         git clone https://github.com/Ae-Mc/nvim
 
-2. Copy ``.config/nvim`` to your config folder
+2. Copy ``nvim`` to your config folder
 (~\AppData\Local on Windows, ~/.config on Linux):
 
         // For Linux
-        cp nvim/.config/nvim ~/.config
+        cp nvim/nvim ~/.config
         // For Windows
-        cp nvim\.config\nvim %LOCALAPPDATA%\nvim
+        cp nvim\nvim %LOCALAPPDATA%\nvim
 
 3. Install vim-plug plugin manager:
 
