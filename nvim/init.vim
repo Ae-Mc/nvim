@@ -49,6 +49,9 @@ call plug#begin(path_to_plug_dir)
     " Markdown preview
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
+    " Autoclose html tags
+    Plug 'alvan/vim-closetag'
+
 call plug#end()
 
 "
@@ -74,6 +77,10 @@ set cursorline
 set ttyfast                " Faster redrawing.
 set lazyredraw             " Only redraw when necessary.
 set laststatus=2
+set splitright
+set splitbelow
+set scrolloff=2            " Minimal number of screen lines to keep above and below the cursor.
+set termguicolors          " Important! Enable true color"
 
 colorscheme gruvbox
 syntax on
@@ -96,8 +103,6 @@ let g:mkdp_echo_preview_url = 1
 " —————————————Pure vim settings——————————————
 set expandtab
 set encoding=utf-8
-set splitright
-set splitbelow
 " Save undo history after file closing
 set undofile
 set noruler
@@ -153,6 +158,7 @@ endfunction
 
 " coc extensions
 let g:coc_global_extensions = [
+            \ 'coc-go',
             \ 'coc-css',
             \ 'coc-html',
             \ 'coc-json',
