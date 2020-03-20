@@ -100,6 +100,7 @@ set splitright
 set splitbelow
 " Save undo history after file closing
 set undofile
+set noruler
 let &undodir = path_to_undofiles
 set backup
 let &backupdir = path_to_backup_dir
@@ -118,6 +119,11 @@ set nowritebackup
 
 " TextEdit might fail if hidden is not set.
 set hidden
+
+" Wrap help files
+autocmd FileType help set wrap
+
+
 " —————————————————coc config—————————————————
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -165,7 +171,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Go to definition
-map gd :call CocAction('jumpDefinition')<CR>
+map <silent> gd :call CocAction('jumpDefinition')<CR>
 
 " ————————————NERDTree settings———————————————
 let NERDTreeQuitOnOpen=0 " Don't close NERDTree on file open
