@@ -1,13 +1,84 @@
-let s:path_to_undofiles = expand(stdpath('data') . '/undofiles')
-let s:path_to_ctrlp_cache = expand(stdpath('data') . '/cache')
-let s:path_to_plug_dir = expand(stdpath('data') . '/plugged')
-let s:path_to_backup_dir = expand(stdpath('data') . '/backups')
-call mkdir(s:path_to_undofiles, 'p')
-call mkdir(s:path_to_ctrlp_cache, 'p')
-call mkdir(s:path_to_plug_dir, 'p')
-call mkdir(s:path_to_backup_dir, 'p')
+"
+" ============================================
+" =             Functions section            =
+" ============================================
+"
 
-call plug#begin(s:path_to_plug_dir)
+function! s:CreateNecessaryDirectories(paths_to_dirs)
+    for l:path_short_name in keys(a:paths_to_dirs)
+        call mkdir(a:paths_to_dirs[l:path_short_name], "p")
+    endfor
+endfunction
+
+function! s:CheckVimPlugInstalled()
+    if filereadable(stdpath('config').'/autoload/plug.vim')
+        return 1
+    endif
+    return 0
+endfunction
+
+function! s:InstallVimPlug()
+    if has('python')
+        let l:py_exe = 'python'
+    elseif has('python3')
+        let l:py_exe = 'python3'
+    else
+        echo 'Error! Python not found!'
+    endif
+    call mkdir(stdpath('config') . '/autoload', 'p')
+    execute py_exe "<< EOF"
+try:
+    import urllib.request as request
+except ImportError:
+    import urllib as request
+import sys
+from os import path
+vim_plug_file_contents = request.urlopen(
+    "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    ).read()
+linux_platforms = ["linux", "darwin", "cygwin"]
+windows_platforms = ["win32"]
+for linux_platform in linux_platforms:
+    if sys.platform.startswith(linux_platform):
+        vim_plug_file_path = path.expanduser("~/.config/nvim/autoload")
+        break
+else:
+    for windows_platform in windows_platforms:
+        if sys.platform.startswith(windows_platform):
+            vim_plug_file_path = path.expanduser(
+                "~\\Appdata\\Local\\nvim\\autoload")
+            break
+    else:
+        print("Unsupported os!")
+        raise(Exception)
+
+with open(path.join(vim_plug_file_path, 'plug.vim'), 'wb') as autoloadFile:
+    autoloadFile.write(
+        bytearray(vim_plug_file_contents))
+EOF
+endfunction
+
+"
+" ============================================
+" =               Main section               =
+" ============================================
+"
+"
+let s:paths_to_dirs = {
+    \ 'backup': expand(stdpath('data') . '/backups'),
+    \ 'undo': expand(stdpath('data') . '/undofiles'),
+    \ 'ctrlp_cache': expand(stdpath('data') . '/cache'),
+    \ 'vim-plug': expand(stdpath('data') . '/plugged')
+  \ }
+
+call s:CreateNecessaryDirectories(s:paths_to_dirs)
+let s:vim_plug_just_installed = 0
+if !s:CheckVimPlugInstalled()
+    call s:InstallVimPlug()
+    let s:vim_plug_just_installed = 1
+endif
+
+call plug#begin(s:paths_to_dirs['vim-plug'])
 
     Plug 'scrooloose/nerdtree'
     " Adds file type icons to Vim plugins such as: NERDTree, vim-airline, CtrlP,
@@ -54,6 +125,9 @@ call plug#begin(s:path_to_plug_dir)
 
 call plug#end()
 
+if s:vim_plug_just_installed
+    :PlugInstall
+endif
 "
 " ============================================
 " =            Interface settings            =
@@ -106,9 +180,9 @@ set encoding=utf-8
 " Save undo history after file closing
 set undofile
 set noruler
-let &undodir = s:path_to_undofiles
+let &undodir = s:paths_to_dirs['undo']
 set backup
-let &backupdir = s:path_to_backup_dir
+let &backupdir = s:paths_to_dirs['backup']
 " Разрешаем использовать <backspace> в insert mode
 set backspace=indent,eol,start
 
@@ -187,9 +261,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " —————————————Other settings—————————————————
 " Overlay feature
 let g:choosewin_overlay_enable = 1
-let g:ctrlp_cache_dir = s:path_to_ctrlp_cache
+let g:ctrlp_cache_dir = s:paths_to_dirs['ctrlp_cache']
 " —————————————————Mappings———————————————————
 map <F4> :NERDTreeToggle<CR>
 " Vista tagbar toggle
 map <F3> :Vista!!<CR>
 nmap - <Plug>(choosewin)
+
