@@ -37,6 +37,14 @@ on windows and
 ![Windows Screenshot 1](https://user-images.githubusercontent.com/43097289/76864602-46f41200-6859-11ea-9502-c0fdc6ae10be.png)
 ![Windows Screenshot 2](https://user-images.githubusercontent.com/43097289/76865751-14e3af80-685b-11ea-9b4d-ba92e879baba.png)
 
+# Dependencies
+
++ yarn (just on linux)
++ git
++ Neovim
++ Python
++ FiraCode Nerd Font
+
 # Installation
 
 1. Clone this repository:
@@ -51,12 +59,5 @@ on windows and
         // For Windows
         cp nvim\nvim %LOCALAPPDATA%\nvim
 
-3. Install vim-plug plugin manager:
-
-        // For Linux
-        ./nvim/installVimPlug.sh
-        // For Windows
-        powershell nvim/installVimPlug.ps1
-
-4. Start nvim and execute ``:PlugInstall``
-5. Enjoy!
+3. Start Neovim.
+4. Enjoy!

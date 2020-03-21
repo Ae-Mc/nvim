@@ -118,7 +118,12 @@ call plug#begin(s:paths_to_dirs['vim-plug'])
     Plug 'Xuyuanp/nerdtree-git-plugin'
 
     " Markdown preview
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+    if has("win32") || has("win64")
+        Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+    else
+        Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+    endif
+
 
     " Autoclose html tags
     Plug 'alvan/vim-closetag'
