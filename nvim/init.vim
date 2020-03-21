@@ -34,7 +34,7 @@ except ImportError:
 import sys
 from os import path
 vim_plug_file_contents = request.urlopen(
-    "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     ).read()
 linux_platforms = ["linux", "darwin", "cygwin"]
 windows_platforms = ["win32"]
