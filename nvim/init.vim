@@ -252,12 +252,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Go to definition
-map <silent> gd :call CocAction('jumpDefinition')<CR>
-
 " ————————————NERDTree settings———————————————
 let NERDTreeQuitOnOpen=0 " Don't close NERDTree on file open
 " Autoclose NERDTree, if NERDTree window is the latest window
@@ -273,3 +267,11 @@ map <F4> :NERDTreeToggle<CR>
 map <F3> :Vista!!<CR>
 nmap - <Plug>(choosewin)
 
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
