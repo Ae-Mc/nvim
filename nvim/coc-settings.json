@@ -1,5 +1,16 @@
 {
     "python.linting.mypyEnabled": true,
     "python.linting.flake8Enabled": true,
-    "coc.preferences.jumpCommand": "edit"
+    "coc.preferences.jumpCommand": "edit",
+    "languageserver": {
+        "clangd": {
+            "command": "clangd",
+            "filetypes": ["c", "cpp"],
+            "rootPatterns": [
+                "compile_flags.txt",
+                "compile_commands.json",
+                ".git"
+            ]
+        }
+    }
 }
