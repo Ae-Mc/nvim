@@ -6,7 +6,7 @@
         "cquery": {
             "enable": true,
             "command": "cquery",
-            "args": ["--log-file=/tmp/cq.log"],
+            "args": [],
             "filetypes": ["c", "cpp"],
             "rootPatterns": [
                 "compile_flags.txt",
@@ -14,7 +14,7 @@
                 ".git"
             ],
             "initializationOptions": {
-                "cacheDirectory": "/tmp/cquery"
+                "cacheDirectory": ""
             }
         }
     }
