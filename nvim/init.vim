@@ -24,6 +24,7 @@ function! s:InstallVimPlug()
         let l:py_exe = 'python3'
     else
         echo 'Error! Python not found!'
+	return
     endif
     call mkdir(stdpath('config') . '/autoload', 'p')
     execute py_exe "<< EOF"
@@ -149,7 +150,7 @@ set softtabstop=4
 set shiftwidth=4
 set number
 set relativenumber
-set nowrap
+set wrap
 set incsearch
 set colorcolumn=80
 set cursorline
@@ -239,8 +240,9 @@ endfunction
 let g:coc_global_extensions = [
             \ 'coc-go',
             \ 'coc-css',
-            \ 'coc-html',
             \ 'coc-json',
+            \ 'coc-html',
+            \ 'coc-cmake',
             \ 'coc-pairs',
             \ 'coc-python',
             \ 'coc-snippets',

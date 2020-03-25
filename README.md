@@ -43,7 +43,8 @@ on windows and
 + git
 + Neovim
 + Python
-+ FiraCode Nerd Font
++ FiraCode Nerd Font (for GUI)
++ Clangd/cquery (for C and C++)
 
 # Installation
 
