@@ -126,7 +126,6 @@ call plug#begin(s:paths_to_dirs['vim-plug'])
         Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
     endif
 
-
     " Autoclose html tags
     Plug 'alvan/vim-closetag'
 
@@ -241,10 +240,12 @@ endfunction
 let g:coc_global_extensions = [
             \ 'coc-go',
             \ 'coc-css',
-            \ 'coc-json',
             \ 'coc-html',
+            \ 'coc-json',
             \ 'coc-cmake',
+            \ 'coc-emmet',
             \ 'coc-pairs',
+            \ 'coc-clangd',
             \ 'coc-python',
             \ 'coc-snippets',
             \ 'coc-dictionary', ]
