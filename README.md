@@ -40,6 +40,7 @@ on windows and
 # Dependencies
 
 + yarn (just on linux)
++ npm
 + git
 + Neovim
 + Python
