@@ -101,6 +101,7 @@ call plug#begin(s:paths_to_dirs['vim-plug'])
 
     " Better language packs
     Plug 'sheerun/vim-polyglot'
+    Plug 'neoclide/jsonc.vim' " Support for cjson syntax
 
     " Window chooser
     Plug 't9md/vim-choosewin'
