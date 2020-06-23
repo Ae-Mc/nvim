@@ -283,5 +283,7 @@ nmap <silent> gr <Plug>(coc-references)
 " Additional diff commands
 command! Diffthis windo diffthis
 command! Difft windo diffthis
+command! Dt windo diffthis
 command! Diffoff windo diffoff
 command! Diffo windo diffoff
+command! Do windo diffoff
