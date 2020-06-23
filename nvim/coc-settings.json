@@ -1,12 +1,16 @@
 {
     "python.linting.mypyEnabled": true,
     "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
     "coc.preferences.jumpCommand": "edit",
     "languageserver": {
         "cquery": {
-            "enable": true,
+            "enable": false,
             "command": "cquery",
-            "args": [],
+            "args": [
+                // "--log-file=/tmp/cq.log" // Linux
+                "--log-file=C:/cquery/cq.log" // Windows
+            ],
             "filetypes": ["c", "cpp"],
             "rootPatterns": [
                 "compile_flags.txt",
@@ -14,7 +18,9 @@
                 ".git"
             ],
             "initializationOptions": {
-                "cacheDirectory": ""
+                // "cacheDirectory": "/tmp/cquery" // Linux
+                // "cacheDirectory": "~/../usr/tmp/cquery" // Termux on android
+                "cacheDirectory": "C:/cquery" // Windows
             }
         }
     }
