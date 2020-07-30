@@ -2,6 +2,7 @@
     "python.linting.mypyEnabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
+    "python.linting.flake8Args": ["--ignore=E266"],
     "coc.preferences.jumpCommand": "edit",
     "languageserver": {
         "cquery": {
