@@ -37,7 +37,7 @@ from os import path
 vim_plug_file_contents = request.urlopen(
         "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     ).read()
-linux_platforms = ["linux", "darwin", "cygwin"]
+linux_platforms = ["linux", "darwin", "cygwin", "freebsd"]
 windows_platforms = ["win32"]
 for linux_platform in linux_platforms:
     if sys.platform.startswith(linux_platform):
