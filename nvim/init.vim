@@ -89,6 +89,10 @@ call plug#begin(s:paths_to_dirs['vim-plug'])
     " Autocomplete
     Plug 'Shougo/neoinclude.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
+    Plug 'dense-analysis/ale'
+
+    " Auto comment
+    Plug 'tpope/vim-commentary'
 
     " Airline
     Plug 'vim-airline/vim-airline'
@@ -131,6 +135,8 @@ call plug#begin(s:paths_to_dirs['vim-plug'])
 
     " Autoclose html tags
     Plug 'alvan/vim-closetag'
+
+	Plug 'tmhedberg/SimpylFold'
 
 call plug#end()
 
@@ -272,7 +278,10 @@ let g:ctrlp_cache_dir = s:paths_to_dirs['ctrlp_cache']
 map <F4> :NERDTreeToggle<CR>
 " Vista tagbar toggle
 map <F3> :Vista!!<CR>
+
 nmap - <Plug>(choosewin)
+xmap <C-/> gc
+nmap <C-/> <Plug>CommentaryLine
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
