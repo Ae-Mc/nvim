@@ -260,7 +260,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-nmap <expr> <C-A-S-f> CocAction('format')
+
+nmap <silent> <C-A-S-f> <Plug>(coc-format)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
