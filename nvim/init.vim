@@ -126,6 +126,9 @@ call plug#begin(s:paths_to_dirs['vim-plug'])
         Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
     endif
 
+	" ReStructuredText preview
+	Plug 'gu-fan/InstantRst'
+
     " Autoclose html tags
     Plug 'alvan/vim-closetag'
 

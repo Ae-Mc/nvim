@@ -3,6 +3,9 @@
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Args": ["--extend-ignore=E266"],
+    "diagnostic.refreshOnInsertMode": true,
+    "diagnostic.refreshAfterSave": false,
+    "diagnostic.checkCurrentLine": true,
     "coc.preferences.jumpCommand": "edit",
     "languageserver": {
         "cquery": {

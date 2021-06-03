@@ -15,11 +15,13 @@ on windows and
 + Autocompletion with [coc.nvim][3]
 + Go to definition with coc.nvim
 + Python linting and syntax checking with coc.nvim
-+ [NERDTree][4] file explorer
-+ [Airline][5] statusbar
-+ [Startify][6] menu on nvim startup
-+ [Gitgutter][7] - git showing changes
-+ [Fugitive][8] git integration
++ [NERDTree][4] File explorer
++ [Airline][5] Statusbar
++ [Startify][6] Menu on Neovim startup
++ [Gitgutter][7] Git showing changes
++ [Fugitive][8] Git integration
++ [Markdown preview][9]
++ [InstantRst][10] ReStructuredText preview
 
 [1]: <https://github.com/neovim/neovim/releases/latest>
 [2]: <https://github.com/daa84/neovim-gtk>
@@ -29,6 +31,8 @@ on windows and
 [6]: <https://github.com/mhinz/vim-startify>
 [7]: <https://github.com/airblade/vim-gitgutter>
 [8]: <https://github.com/tpope/vim-fugitive>
+[9]: <https://github.com/iamcco/markdown-preview.nvim>
+[10]: <https://github.com/gu-fan/InstantRst>
 
 # Screenshots
 
@@ -46,6 +50,7 @@ on windows and
 + Python
 + FiraCode Nerd Font (for GUI)
 + Clangd/cquery (for C and C++)
++ instant-rst python pypl package
 
 # Installation
 
