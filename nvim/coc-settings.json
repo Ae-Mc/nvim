@@ -1,10 +1,12 @@
 {
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length", "79"],
     "python.linting.mypyEnabled": true,
-    "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": ["--extend-ignore=E266"],
+    "python.linting.lintOnSave": true,
     "diagnostic.refreshOnInsertMode": true,
-    "diagnostic.refreshAfterSave": false,
     "diagnostic.checkCurrentLine": true,
     "coc.preferences.jumpCommand": "edit",
     "languageserver": {
