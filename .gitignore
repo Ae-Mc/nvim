@@ -1,7 +1,9 @@
-*
-!nvim
-!nvim/init.vim
-!nvim/ginit.vim
-!nvim/coc-settings.json
-!.gitignore
-!README.md
+/*
+/**/*
+!/.gitignore
+!/README.md
+!/nvim
+!/nvim/lua/
+!/nvim/lua/*.lua
+!/nvim/lua/plugins/
+!/nvim/lua/plugins/*.lua
