@@ -51,7 +51,7 @@ return {
     ['bufferline'] = {
         'akinsho/bufferline.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = [[ require('bufferline').setup() ]],
+        config = [[ require('plugins.bufferline') ]],
     },
 
     -- Показывает уровень отступов
