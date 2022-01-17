@@ -35,6 +35,15 @@ require('packer').startup(function(use)
 
     use 'windwp/nvim-autopairs'
 
+    ----------------------------------------------------------------------------
+    -- Украшательства
+    ----------------------------------------------------------------------------
+
+    use {
+	'akinsho/bufferline.nvim',
+	requires = 'kyazdani42/nvim-web-devicons',
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PackerBootstrap then
@@ -42,6 +51,7 @@ require('packer').startup(function(use)
     end
 
     -- PLugins configuration
+    require("bufferline").setup()
     require('plugins.nvim-cmp')
     require('nvim-autopairs').setup()
 end)
