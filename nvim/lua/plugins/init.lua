@@ -3,12 +3,12 @@ local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
     PackerBootstrap = fn.system({
-	'git',
-	'clone',
-	'--depth',
-	'1',
-	'https://github.com/wbthomason/packer.nvim',
-	install_path
+        'git',
+        'clone',
+        '--depth',
+        '1',
+        'https://github.com/wbthomason/packer.nvim',
+        install_path
     })
 end
 
@@ -23,14 +23,14 @@ require('packer').startup(function(use)
 
     -- Autocompletion
     use {
-        -- 'neovim/nvim-lspconfig',
-	'hrsh7th/cmp-nvim-lsp',
-	'hrsh7th/cmp-buffer',
-	'hrsh7th/cmp-path',
-	'hrsh7th/cmp-cmdline',
-	'hrsh7th/nvim-cmp',
-	'hrsh7th/cmp-vsnip',
-	'hrsh7th/vim-vsnip',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-vsnip',
+        'hrsh7th/vim-vsnip',
+        requires = 'neovim/nvim-lspconfig',
     }
 
     use 'windwp/nvim-autopairs'
@@ -40,9 +40,11 @@ require('packer').startup(function(use)
     ----------------------------------------------------------------------------
 
     use {
-	'akinsho/bufferline.nvim',
-	requires = 'kyazdani42/nvim-web-devicons',
+        'akinsho/bufferline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
     }
+
+    use 'lukas-reineke/indent-blankline.nvim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
@@ -51,9 +53,14 @@ require('packer').startup(function(use)
     end
 
     -- PLugins configuration
-    require("bufferline").setup()
+    require('bufferline').setup()
     require('plugins.nvim-cmp')
     require('nvim-autopairs').setup()
+    require('indent_blankline').setup({
+        -- show_current_context = true,
+        -- show_current_context_start = true,
+        show_first_indent_level = false,
+    })
 end)
 
 vim.cmd([[
