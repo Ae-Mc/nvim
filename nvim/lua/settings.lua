@@ -3,5 +3,6 @@
 --------------------------------------------------------------------------------
 
 vim.opt.expandtab = false
+vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.shiftwidth = 4
