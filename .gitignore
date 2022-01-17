@@ -3,7 +3,8 @@
 !/.gitignore
 !/Fira_Code_v6.2.zip
 !/README.md
-!/nvim
+!/nvim/
+!/nvim/init.lua
 !/nvim/lua/
 !/nvim/lua/*.lua
 !/nvim/lua/plugins/
