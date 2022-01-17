@@ -1,4 +1,3 @@
-local nvim_lsp = require('lspconfig')
 local config_lspconfig = {}
 
 -- Use an on_attach function to only map the following keys

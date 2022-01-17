@@ -14,19 +14,23 @@ end
 
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'  -- Packer packet manager
+    -- LSP servers support
     use {
         'neovim/nvim-lspconfig',
         'williamboman/nvim-lsp-installer',
     }
     use 'morhetz/gruvbox'  -- Color scheme
+
     -- Autocompletion
     use {
-        'neovim/nvim-lspconfig',
+        -- 'neovim/nvim-lspconfig',
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-buffer',
 	'hrsh7th/cmp-path',
 	'hrsh7th/cmp-cmdline',
 	'hrsh7th/nvim-cmp',
+	'hrsh7th/cmp-vsnip',
+	'hrsh7th/vim-vsnip',
     }
     -- use 'foo2/bar2.nvim'
 
@@ -37,7 +41,6 @@ require('packer').startup(function(use)
     end
 
     -- PLugins configuration
-    require('plugins.lspconfig')
     require('plugins.nvim-cmp')
 end)
 
