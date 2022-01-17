@@ -2,7 +2,7 @@
 -- Модуль с основными настроками - settings
 --------------------------------------------------------------------------------
 
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.shiftwidth = 4
