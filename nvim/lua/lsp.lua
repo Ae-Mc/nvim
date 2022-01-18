@@ -34,8 +34,8 @@ function test_plugins()
         and plugins['lspconfig']
         and plugins['nvim-cmp']
     ) then
-    main()
-end
+        main()
+    end
 end
 
 function main()
