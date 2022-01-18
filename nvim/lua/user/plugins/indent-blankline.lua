@@ -9,12 +9,12 @@ vim.cmd [[ highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine ]]
 vim.cmd [[ highlight IndentBlanklineContextChar guifg=#fff ]]
 
 local highlight_list = {
-    "IndentBlanklineIndent1",
-    "IndentBlanklineIndent2",
-    "IndentBlanklineIndent3",
-    "IndentBlanklineIndent4",
-    "IndentBlanklineIndent5",
-    "IndentBlanklineIndent6",
+    'IndentBlanklineIndent1',
+    'IndentBlanklineIndent2',
+    'IndentBlanklineIndent3',
+    'IndentBlanklineIndent4',
+    'IndentBlanklineIndent5',
+    'IndentBlanklineIndent6',
 }
 
 require('indent_blankline').setup({
@@ -26,8 +26,8 @@ require('indent_blankline').setup({
     show_trailing_blankline_indent = false,
     use_treesitter = treesitter_installed,
     filetype_exclude = {
-        "lspinfo", "packer", "checkhealth", "help", "NvimTree"
+        'lspinfo', 'packer', 'checkhealth', 'help', 'NvimTree', 'lsp-installer',
     },
-    buftype_exc;ude = { "terminal" },
+    buftype_exclude = { 'terminal' },
 })
 
