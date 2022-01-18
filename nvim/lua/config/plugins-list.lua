@@ -33,10 +33,15 @@ return {
     ['nvim-treesitter'] = {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        disable = true,
     },
 
-    -- Умный поиск
+    -- Плагин для простого комментирования блоков/строк кода
+    ['comment'] = {
+        'numToStr/Comment.nvim',
+        config = [[ require('Comment').setup() ]],
+    },
+
+    -- Умный поиск по файлам
     ['telescope'] = {
         'nvim-telescope/telescope.nvim',
         requires = 'nvim-lua/plenary.nvim',
