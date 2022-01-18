@@ -7,7 +7,9 @@
 !/nvim/init.lua
 !/nvim/lua/
 !/nvim/lua/*.lua
-!/nvim/lua/plugins/
-!/nvim/lua/plugins/*.lua
-!/nvim/lua/config/
-!/nvim/lua/config/*.lua
+!/nvim/lua/user/
+!/nvim/lua/user/*.lua
+!/nvim/lua/user/config/
+!/nvim/lua/user/config/*.lua
+!/nvim/lua/user/plugins/
+!/nvim/lua/user/plugins/*.lua

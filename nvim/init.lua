@@ -2,8 +2,5 @@
 -- Импорт модулей lua
 --------------------------------------------------------------------------------
 
-require('settings')
-require('keymaps')
-require('gui')
-require('plugins')
-require('lsp')
+require('user.config')
+require('user.plugins')
