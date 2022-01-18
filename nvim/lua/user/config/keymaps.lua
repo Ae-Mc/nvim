@@ -11,8 +11,10 @@ local function prepare_opts(opts)
 end
 
 local function nmap(lhs, rhs, opts)
-    opts = prepare_opts(opts)
-    vim.api.nvim_set_keymap('n', lhs, rhs, opts)
+    vim.api.nvim_set_keymap('n', lhs, rhs, prepare_opts(opts))
+end
+local function tmap(lhs, rhs, opts)
+    vim.api.nvim_set_keymap('t', lhs, rhs, prepare_opts(opts))
 end
 local function all_map(lhs, rhs, opts)
     opts = prepare_opts(opts)
