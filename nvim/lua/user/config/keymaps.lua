@@ -22,9 +22,12 @@ local function all_map(lhs, rhs, opts)
     vim.api.nvim_set_keymap('!', lhs, rhs, opts)
 end
 
-nmap(',<space>', ':nohlsearch<CR>')
+vim.g.mapleader = ' '
+nmap(',<leader>', ':nohlsearch<CR>')
 nmap('Y', 'yy')
 nmap('<C-w>q', '<Cmd>:bp|bd #<CR>', {noremap = false})
+nmap('<F2>', '<Cmd>:NvimTreeToggle<CR>')
+nmap('<F3>', '<Cmd>:NvimTreeFocus<CR>')
+nmap('<leader>b', '<Cmd>:BufferLinePick<CR>')
 all_map('<C-Tab>', '<Cmd>:BufferLineCycleNext<CR>')
 all_map('<C-S-Tab>', '<Cmd>:BufferLineCyclePrev<CR>')
-all_map('<F3>', '<Cmd>:NvimTreeFocus<CR>')
