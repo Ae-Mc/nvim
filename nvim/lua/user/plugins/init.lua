@@ -16,6 +16,10 @@ require('packer').startup(function(use)
     -- Менеджер плагинов
     use 'wbthomason/packer.nvim'
 
+    ----------------------------------------------------------------------------
+    -- Всё, что связано с автодополнением, линтингом и т. п.
+    ----------------------------------------------------------------------------
+
     -- Поддержка LSP
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
@@ -34,27 +38,18 @@ require('packer').startup(function(use)
         },
         config = [[ pcall(require, 'user.plugins.nvim-cmp') ]],
     }
-    use { -- Автоматические закрывающие скобки, кавычки и т.п.
+
+    -- Автоматические закрывающие скобки, кавычки и т.п.
+    use {
         'windwp/nvim-autopairs',
         config = [[
             a, b = pcall(require, 'nvim-autopairs'); if a then b.setup() end
         ]],
     }
 
-    -- Treesitter (улучшенная подсветка синтаксиса)
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-        config = [[ pcall(require, 'user.plugins.nvim-treesitter') ]]
-    }
-
-    -- Плагин для простого комментирования блоков/строк кода
-    use {
-        'numToStr/Comment.nvim',
-        config = [[
-            a, b = pcall(require, 'Comment'); if a then b.setup() end
-        ]],
-    }
+    ---------------------------------------------------------------------------
+    -- Работа с файлами, а также с Git VCS
+    ---------------------------------------------------------------------------
 
     -- Умный поиск по файлам
     use {
@@ -72,19 +67,19 @@ require('packer').startup(function(use)
         config = [[ pcall(require, 'user.plugins.nvim-tree') ]]
     }
 
-    -- Автоматическое изменение размеров текущего окна (split'а)
-    use {
-        "beauwilliams/focus.nvim",
-        config = [[ pcall(require, 'user.plugins.focus') ]],
-    }
-
-    use 'powerman/vim-plugin-ruscmd'  -- Улучшенная поддержка русской раскладки
-
     ----------------------------------------------------------------------------
     -- Украшательства
     ----------------------------------------------------------------------------
 
-    use 'morhetz/gruvbox'  -- Color scheme
+    -- Тема
+    use 'morhetz/gruvbox'
+
+    -- Treesitter (улучшенная подсветка синтаксиса)
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = [[ pcall(require, 'user.plugins.nvim-treesitter') ]]
+    }
 
     -- Строка с буферами (вкладки/таббар)
     use {
@@ -107,6 +102,27 @@ require('packer').startup(function(use)
         'lukas-reineke/indent-blankline.nvim',
         config = [[ pcall(require, 'user.plugins.indent-blankline') ]]
     }
+
+    ----------------------------------------------------------------------------
+    -- Другие плагины
+    ----------------------------------------------------------------------------
+
+    -- Плагин для простого комментирования блоков/строк кода
+    use {
+        'numToStr/Comment.nvim',
+        config = [[
+            a, b = pcall(require, 'Comment'); if a then b.setup() end
+        ]],
+    }
+
+    -- Автоматическое изменение размеров текущего окна (split'а)
+    use {
+        "beauwilliams/focus.nvim",
+        config = [[ pcall(require, 'user.plugins.focus') ]],
+    }
+
+    -- Улучшенная поддержка русской раскладки
+    use 'powerman/vim-plugin-ruscmd'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
