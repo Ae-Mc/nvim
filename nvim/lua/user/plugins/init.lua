@@ -72,10 +72,13 @@ require('packer').startup(function(use)
         config = [[ pcall(require, 'user.plugins.nvim-tree') ]]
     }
 
+    -- Автоматическое изменение размеров текущего окна (split'а)
     use {
         "beauwilliams/focus.nvim",
         config = [[ pcall(require, 'user.plugins.focus') ]],
     }
+
+    use 'powerman/vim-plugin-ruscmd'  -- Улучшенная поддержка русской раскладки
 
     ----------------------------------------------------------------------------
     -- Украшательства
