@@ -11,5 +11,7 @@
 !/nvim/lua/user/*.lua
 !/nvim/lua/user/config/
 !/nvim/lua/user/config/*.lua
+!/nvim/lua/user/config/lsp-configurations/
+!/nvim/lua/user/config/lsp-configurations/*.lua
 !/nvim/lua/user/plugins/
 !/nvim/lua/user/plugins/*.lua
