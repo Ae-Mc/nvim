@@ -65,6 +65,15 @@ require('packer').startup(function(use)
         config = [[ Prequire('nvim-autopairs', {}) ]],
     }
 
+    use {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = [[
+        Prequire(
+            'Trouble', { auto_open = true, mode = 'document_diagnostics' }
+        ) ]]
+    }
+
     ---------------------------------------------------------------------------
     -- Работа с файлами, а также с Git VCS
     ---------------------------------------------------------------------------
