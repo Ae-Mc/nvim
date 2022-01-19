@@ -27,7 +27,7 @@ local language_server_options_modifiers = {
 
 local installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
 local cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-local lsp_ok, lspconfig = pcall(require, 'plugins.lspconfig')
+local lsp_ok, lspconfig = pcall(require, 'user.plugins.lspconfig')
 
 if not (installer_ok and cmp_ok and lsp_ok) then
     return
