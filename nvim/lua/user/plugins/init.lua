@@ -51,6 +51,10 @@ require('packer').startup(function(use)
     -- Работа с файлами, а также с Git VCS
     ---------------------------------------------------------------------------
 
+    -- Запуск lazygit в плавающем окне внутри Neovim
+    -- Для работы требуется установленный lazygit, доступный в Path
+    use 'kdheepak/lazygit.nvim'
+
     -- Умный поиск по файлам
     use {
         'nvim-telescope/telescope.nvim',

@@ -25,7 +25,8 @@ end
 vim.g.mapleader = ' '
 nmap(',<leader>', ':nohlsearch<CR>')
 nmap('Y', 'yy')
-nmap('<C-w>q', '<Cmd>:bp|bd #<CR>', {noremap = false})
+nmap('<C-w>q', '<Cmd>:bd<CR>', {noremap = false})
+nmap('<leader>gg', '<Cmd>:LazyGit<CR>')
 nmap('<F2>', '<Cmd>:NvimTreeToggle<CR>')
 nmap('<F3>', '<Cmd>:NvimTreeFocus<CR>')
 nmap('<leader>b', '<Cmd>:BufferLinePick<CR>')
