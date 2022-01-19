@@ -12,6 +12,26 @@ if fn.empty(fn.glob(install_path)) > 0 then
     })
 end
 
+---@param plugin_name string name of module to require
+---@param setup function|table|string|nil
+--- if setup is function than after require that function will be called
+--- if setup is table than plugin.setup(setup) will be executed
+--- if setup is string than plugin.setup(loadstring(setup)) will be executed
+--- if setup is nil than only pcall(require, plugin_name) will be executed
+---@diagnostic disable-next-line: unused-function, unused-local
+function Prequire(plugin_name, setup)
+    local ok, plugin =  pcall(require, plugin_name)
+    if ok then
+        if type(setup) == "function" then
+            setup()
+        elseif type(setup) =="table" then
+            plugin.setup(setup)
+        elseif type(setup) == "string" then
+            plugin.setup(loadstring(setup))
+        end
+    end
+end
+
 require('packer').startup(function(use)
     -- Менеджер плагинов
     use 'wbthomason/packer.nvim'
@@ -36,15 +56,13 @@ require('packer').startup(function(use)
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip',
         },
-        config = [[ pcall(require, 'user.plugins.nvim-cmp') ]],
+        config = [[ Prequire('user.plugins.nvim-cmp') ]],
     }
 
     -- Автоматические закрывающие скобки, кавычки и т.п.
     use {
         'windwp/nvim-autopairs',
-        config = [[
-            a, b = pcall(require, 'nvim-autopairs'); if a then b.setup() end
-        ]],
+        config = [[ Prequire('nvim-autopairs', {}) ]],
     }
 
     ---------------------------------------------------------------------------
@@ -59,16 +77,14 @@ require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim',
         requires = 'nvim-lua/plenary.nvim',
-        config = [[
-            a, b = pcall(require, 'telescope'); if a then b.setup() end
-        ]],
+        config = [[ Prequire('telescope', {}) ]],
     }
 
     -- Файловый менеджер
     use {
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true},
-        config = [[ pcall(require, 'user.plugins.nvim-tree') ]]
+        config = [[ Prequire('user.plugins.nvim-tree') ]]
     }
 
     ----------------------------------------------------------------------------
@@ -82,29 +98,27 @@ require('packer').startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        config = [[ pcall(require, 'user.plugins.nvim-treesitter') ]]
+        config = [[ Prequire('user.plugins.nvim-treesitter') ]]
     }
 
     -- Строка с буферами (вкладки/таббар)
     use {
         'akinsho/bufferline.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = [[ pcall(require, 'user.plugins.bufferline') ]],
+        config = [[ Prequire('user.plugins.bufferline') ]],
     }
 
     -- Строка с дополнительной информацией (статусбар)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons' },
-        config = [[
-            a, b = pcall(require, 'lualine'); if a then b.setup() end
-        ]],
+        config = [[ Prequire('lualine', {}) ]],
     }
 
     -- Показывает уровень отступов
     use {
         'lukas-reineke/indent-blankline.nvim',
-        config = [[ pcall(require, 'user.plugins.indent-blankline') ]]
+        config = [[ Prequire('user.plugins.indent-blankline') ]]
     }
 
     ----------------------------------------------------------------------------
@@ -114,15 +128,13 @@ require('packer').startup(function(use)
     -- Плагин для простого комментирования блоков/строк кода
     use {
         'numToStr/Comment.nvim',
-        config = [[
-            a, b = pcall(require, 'Comment'); if a then b.setup() end
-        ]],
+        config = [[ Prequire('Comment', {}) ]],
     }
 
     -- Автоматическое изменение размеров текущего окна (split'а)
     use {
         "beauwilliams/focus.nvim",
-        config = [[ pcall(require, 'user.plugins.focus') ]],
+        config = [[ Prequire('user.plugins.focus') ]],
     }
 
     -- Улучшенная поддержка русской раскладки
@@ -132,5 +144,3 @@ require('packer').startup(function(use)
     -- Put this at the end after all plugins
     if PackerBootstrap then require('packer').sync() end
 end)
-
-return plugins
