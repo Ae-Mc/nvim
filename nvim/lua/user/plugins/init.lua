@@ -94,6 +94,22 @@ require('packer').startup(function(use)
     -- Тема
     use 'morhetz/gruvbox'
 
+    -- Стартовый экран
+    use {
+        'goolord/alpha-nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = [[
+            Prequire(
+                "alpha",
+                function()
+                    return require('alpha').setup(
+                        require('alpha.themes.startify').opts
+                    )
+                end
+            )
+        ]]
+    }
+
     -- Treesitter (улучшенная подсветка синтаксиса)
     use {
         'nvim-treesitter/nvim-treesitter',

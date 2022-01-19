@@ -26,7 +26,13 @@ require('indent_blankline').setup({
     show_trailing_blankline_indent = false,
     use_treesitter = treesitter_installed,
     filetype_exclude = {
-        'lspinfo', 'packer', 'checkhealth', 'help', 'NvimTree', 'lsp-installer',
+        'lspinfo',
+        'packer',
+        'checkhealth',
+        'help',
+        'NvimTree',
+        'lsp-installer',
+        'alpha',
     },
     buftype_exclude = { 'terminal' },
 })
