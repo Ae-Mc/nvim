@@ -6,23 +6,8 @@
 -- nvim-lsp-installer repo
 local servers = {'sumneko_lua'}
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
 local language_server_options_modifiers = {
-    ['sumneko_lua'] = function(opts)
-    opts.settings = {
-        Lua = {
-            runtime = { version = 'LuaJIT', path = runtime_path },
-            diagnostics = { globals = {'vim'} },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file("", true)
-            },
-            telemetry = { enabled = false },
-        }
-    }
-    end,
+    sumneko_lua = require('user.config.lsp-configurations.sumneko_lua'),
 }
 
 local installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
