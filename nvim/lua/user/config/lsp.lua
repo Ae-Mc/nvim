@@ -4,25 +4,80 @@
 
 -- Servers to be installed. List of all servers could be found in
 -- nvim-lsp-installer repo
-local servers = {'sumneko_lua'}
+local servers = {'sumneko_lua', 'efm'}
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
+--- @type table<string, fun(opts:string):nil>
 local language_server_options_modifiers = {
-    ['sumneko_lua'] = function(opts)
-    opts.settings = {
-        Lua = {
-            runtime = { version = 'LuaJIT', path = runtime_path },
-            diagnostics = { globals = {'vim'} },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file("", true)
-            },
-            telemetry = { enabled = false },
+    ['sumneko_lua'] = require('user.config.lsp-configurations.sumneko_lua'),
+    ['efm'] = function(opts)
+        opts.filetypes = { 'python' }
+        opts.init_options = { hover = false }
+        opts.settings = {
+            rootMarkers = { '.git/' },
+            lintDebounce = { '1s' },
+            languages = {
+                python = {
+                    {
+                        lintCommand =
+                            'pylint --output-format text --score no '
+                            .. '--msg-template {path} '
+                            .. '={line}:{column}:{C}:{msg} ${INPUT}',
+                        lintStdin = false,
+                        lintFormats = { '%f:%l:%c:%t:%m' },
+                        lintOffsetColumns = 1,
+                        lintCategoryMap = {
+                            I = 'H',
+                            R = 'I',
+                            C = 'I',
+                            W = 'W',
+                            E = 'E',
+                            F = 'E',
+                        },
+                        formatCommand = 'black --quiet -',
+                        formatStdin = true,
+                    },
+                    --[[ pythonFlake8 = {
+                        lintCommand = 'flake8 --stdin-display-name ${INPUT} -',
+                        lintStdin = true,
+                        lintFormats = { '%f:%l:%c: %m' },
+                    },
+                    pythonMyPy = {
+                        lintCommand = 'mypy --show-column-numbers',
+                        lintFormats = {
+                          '%f:%l:%c: %trror: %m',
+                          '%f:%l:%c: %tarning: %m',
+                          '%f:%l:%c: %tote: %m',
+                        },
+                    },
+                    pythonBlack = {
+                        formatCommand = 'black --quiet -',
+                        formatStdin = true,
+                    },
+                    pythonIsort = {
+                        formatCommand = 'isort --quiet -',
+                        formatStdin = true,
+                    },
+                    pythonPylint = {
+                        lintCommand =
+                            'pylint --output-format text --score no '
+                            .. '--msg-template {path} '
+                            .. '={line}:{column}:{C}:{msg} ${INPUT}',
+                        lintStdin = false,
+                        lintFormats = { '%f:%l:%c:%t:%m' },
+                        lintOffsetColumns = 1,
+                        lintCategoryMap = {
+                            I = 'H',
+                            R = 'I',
+                            C = 'I',
+                            W = 'W',
+                            E = 'E',
+                            F = 'E',
+                        }
+                    } ]]
+                }
+            }
         }
-    }
-    end,
+    end
 }
 
 local installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
@@ -30,6 +85,7 @@ local cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 local lsp_ok, lspconfig = pcall(require, 'user.plugins.lspconfig')
 
 if not (installer_ok and cmp_ok and lsp_ok) then
+    error('Something is not installed: lspconfig or nvim-cmp or nvim-lsp-installer')
     return
 end
 
