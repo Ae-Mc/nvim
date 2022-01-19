@@ -90,6 +90,15 @@ require('packer').startup(function(use)
         config = [[ pcall(require, 'user.plugins.bufferline') ]],
     }
 
+    -- Строка с дополнительной информацией (статусбар)
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = [[
+            a, b = pcall(require, 'lualine'); if a then b.setup() end
+        ]],
+    }
+
     -- Показывает уровень отступов
     use {
         'lukas-reineke/indent-blankline.nvim',
