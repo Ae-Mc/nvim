@@ -10,54 +10,40 @@ local servers = {'sumneko_lua', 'efm'}
 local language_server_options_modifiers = {
     ['sumneko_lua'] = require('user.config.lsp-configurations.sumneko_lua'),
     ['efm'] = function(opts)
+        opts.version = 2
         opts.filetypes = { 'python' }
-        opts.init_options = { hover = false }
+        opts.init_options = {
+            hover = false,
+            documentFormatting = true,
+            diagnostics = true,
+        }
         opts.settings = {
-            rootMarkers = { '.git/' },
-            lintDebounce = { '1s' },
+            rootMarkers = { '.git' },
+            lintDebounce = '1s',
             languages = {
                 python = {
                     {
-                        lintCommand =
-                            'pylint --output-format text --score no '
-                            .. '--msg-template {path} '
-                            .. '={line}:{column}:{C}:{msg} ${INPUT}',
-                        lintStdin = false,
-                        lintFormats = { '%f:%l:%c:%t:%m' },
-                        lintOffsetColumns = 1,
-                        lintCategoryMap = {
-                            I = 'H',
-                            R = 'I',
-                            C = 'I',
-                            W = 'W',
-                            E = 'E',
-                            F = 'E',
-                        },
-                        formatCommand = 'black --quiet -',
+                        formatCommand = 'black --quiet --line-length=80 -',
                         formatStdin = true,
                     },
-                    --[[ pythonFlake8 = {
+                    {
                         lintCommand = 'flake8 --stdin-display-name ${INPUT} -',
                         lintStdin = true,
                         lintFormats = { '%f:%l:%c: %m' },
                     },
-                    pythonMyPy = {
+                    --[[ pythonMyPy = {
                         lintCommand = 'mypy --show-column-numbers',
                         lintFormats = {
                           '%f:%l:%c: %trror: %m',
                           '%f:%l:%c: %tarning: %m',
                           '%f:%l:%c: %tote: %m',
                         },
-                    },
-                    pythonBlack = {
-                        formatCommand = 'black --quiet -',
-                        formatStdin = true,
-                    },
-                    pythonIsort = {
+                    }, ]]
+                    {
                         formatCommand = 'isort --quiet -',
                         formatStdin = true,
                     },
-                    pythonPylint = {
+                    --[[ {
                         lintCommand =
                             'pylint --output-format text --score no '
                             .. '--msg-template {path} '
