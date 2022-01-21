@@ -4,12 +4,13 @@
 
 -- Servers to be installed. List of all servers could be found in
 -- nvim-lsp-installer repo
-local servers = {'sumneko_lua', 'efm'}
+local servers = {'sumneko_lua', 'efm', 'pyright'}
 
 --- @type table<string, fun(opts:string):nil>
 local language_server_options_modifiers = {
     ['sumneko_lua'] = require('user.config.lsp-configurations.sumneko_lua'),
     ['efm'] = require('user.config.lsp-configurations.efm'),
+    ['pyright'] = require('user.config.lsp-configurations.pyright'),
 }
 
 local installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')

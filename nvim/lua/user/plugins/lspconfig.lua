@@ -1,5 +1,7 @@
 local config_lspconfig = {}
 
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 function config_lspconfig.on_attach (_, bufnr)

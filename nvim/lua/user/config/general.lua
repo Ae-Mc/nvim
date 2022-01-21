@@ -14,6 +14,8 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.tabstop = 4
 vim.o.undofile = true
+-- Reduce updatetime which affects CursorHold
+vim.o.updatetime = 0
 
 -- Восстановление позиции курсора
 vim.cmd([[ autocmd BufRead * autocmd FileType <buffer> ++once

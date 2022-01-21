@@ -8,15 +8,17 @@ return function(opts)
     }
     opts.settings = {
         rootMarkers = { '.git' },
-        lintDebounce = '1s',
+        lintDebounce = '100ms',
         languages = {
             python = {
                 {
-                    formatCommand = 'black --quiet --line-length=80 -',
+                    formatCommand = 'black --quiet --line-length=79 -',
                     formatStdin = true,
                 },
                 {
-                    lintCommand = 'flake8 --stdin-display-name ${INPUT} -',
+                    lintCommand = 'flake8 --format '
+                    ..'"%(path)s:%(row)d:%(col)d: %(code)s: %(code)s %(text)s" '
+                    ..'--stdin-display-name ${INPUT} -',
                     lintStdin = true,
                     lintFormats = { '%f:%l:%c: %t%n %m' },
                     lintIgnoreExitCode = true,
@@ -41,8 +43,7 @@ return function(opts)
                     lintCommand =
                         'pylint --output-format text --score no '
                         .. '--msg-template '
-                        ..'{path}:{line}:{column}:{msg_id}:{msg} '
-                        .. '${INPUT}',
+                        ..'{path}:{line}:{column}:{msg_id}:{msg} ${INPUT}',
                     lintStdin = true,
                     lintFormats = { '%f:%l:%c:%t%n:%m' },
                     lintOffset = 1,
