@@ -18,8 +18,9 @@ return function(opts)
                 {
                     lintCommand = 'flake8 --stdin-display-name ${INPUT} -',
                     lintStdin = true,
-                    lintFormats = { '%f:%l:%c: %m' },
+                    lintFormats = { '%f:%l:%c: %t%n %m' },
                     lintIgnoreExitCode = true,
+                    prefix = "flake8",
                 },
                 --[[ pythonMyPy = {
                     lintCommand = 'mypy --show-column-numbers',
@@ -35,14 +36,13 @@ return function(opts)
                 },
                 {
                     lintCommand =
-                        -- 'pylint --output-format text --score no '
-                        -- .. '--msg-template {line}:{column}:{C}:{msg} ${INPUT}',
-                        'pylint --output-format text --score no --format-stdin'
-                        ..' ${INPUT}',
+                        'pylint --output-format text --score no '
+                        .. '--msg-template '
+                        ..'{path}:{line}:{column}:{msg_id}:{msg} '
+                        .. '${INPUT}',
                     lintStdin = true,
-                    lintFormats = { '%f:%l:%c: %t: %m' },
+                    lintFormats = { '%f:%l:%c:%t%n:%m' },
                     lintOffset = 1,
-                    lintOffsetColumns = 1,
                     lintCategoryMap = {
                         I = 'H',
                         R = 'I',
@@ -50,7 +50,8 @@ return function(opts)
                         W = 'W',
                         E = 'E',
                         F = 'E',
-                    }
+                    },
+                    prefix = "pylint",
                 }
             }
         }
