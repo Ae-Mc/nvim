@@ -165,6 +165,9 @@ require('packer').startup(function(use)
     -- Улучшенная поддержка русской раскладки
     use 'powerman/vim-plugin-ruscmd'
 
+    -- Улучшенное закрытие буферов
+    use 'ojroques/nvim-bufdel'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PackerBootstrap then require('packer').sync() end

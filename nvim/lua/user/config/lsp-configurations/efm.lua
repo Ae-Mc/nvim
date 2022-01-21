@@ -42,6 +42,7 @@ return function(opts)
                 {
                     lintCommand =
                         'pylint --output-format text --score no '
+                        .. 'disable=too-many-arguments '
                         .. '--msg-template '
                         ..'{path}:{line}:{column}:{msg_id}:{msg} ${INPUT}',
                     lintStdin = true,
