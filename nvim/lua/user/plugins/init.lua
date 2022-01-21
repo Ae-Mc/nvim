@@ -91,7 +91,7 @@ require('packer').startup(function(use)
 
     -- Файловый менеджер
     use {
-        'Ae-Mc/nvim-tree.lua',
+        'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true},
         config = [[ Prequire('user.plugins.nvim-tree') ]]
     }
