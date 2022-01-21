@@ -22,14 +22,17 @@ return function(opts)
                     lintIgnoreExitCode = true,
                     prefix = "flake8",
                 },
-                --[[ pythonMyPy = {
-                    lintCommand = 'mypy --show-column-numbers',
+                {
+                    lintCommand =
+                        'mypy --show-column-numbers --no-error-summary',
                     lintFormats = {
                       '%f:%l:%c: %trror: %m',
                       '%f:%l:%c: %tarning: %m',
                       '%f:%l:%c: %tote: %m',
                     },
-                }, ]]
+                    lintIgnoreExitCode = true,
+                    prefix = "mypy",
+                },
                 {
                     formatCommand = 'isort --quiet -',
                     formatStdin = true,
