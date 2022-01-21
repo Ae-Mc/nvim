@@ -2,5 +2,5 @@
 -- Импорт модулей lua
 --------------------------------------------------------------------------------
 
-require('user.config')
 require('user.plugins')
+require('user.config')
