@@ -91,7 +91,8 @@ require('packer').startup(function(use)
 
     -- Файловый менеджер
     use {
-        'kyazdani42/nvim-tree.lua',
+        'Ae-Mc/nvim-tree.lua',
+        branch = 'fix-git-icons',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true},
         config = [[ Prequire('user.plugins.nvim-tree') ]]
     }
