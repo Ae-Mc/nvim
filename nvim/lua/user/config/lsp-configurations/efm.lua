@@ -43,11 +43,11 @@ return function(opts)
                     lintCommand =
                         'pylint --output-format text --score no '
                         .. '--disable=too-many-arguments '
+                        .. '--extension-pkg-whitelist=pydantic '
                         .. '--msg-template '
                         ..'{path}:{line}:{column}:{msg_id}:{msg} ${INPUT}',
                     lintStdin = true,
                     lintFormats = { '%f:%l:%c:%t%n:%m' },
-                    lintOffset = 1,
                     lintCategoryMap = {
                         I = 'H',
                         R = 'I',
