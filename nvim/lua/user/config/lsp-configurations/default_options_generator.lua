@@ -1,15 +1,11 @@
-local config_lspconfig = {}
-
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-function config_lspconfig.on_attach (_, bufnr)
+local function default_on_attach (_, bufnr)
     local function buf_set_keymap(...)
-	vim.api.nvim_buf_set_keymap(bufnr, ...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
     local function buf_set_option(...)
-	vim.api.nvim_buf_set_option(bufnr, ...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
     end
 
     -- Enable completion triggered by <c-x><c-o>
@@ -18,7 +14,7 @@ function config_lspconfig.on_attach (_, bufnr)
     -- Mappings.
     local opts = {noremap = true, silent = true}
 
-    vim.cmd('command! LspFormat lua vim.lsp.buf.formatting()')
+    vim.api.nvim_create_user_command('LspFormat', 'lua vim.lsp.buf.format({ async = true })', {})
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -45,9 +41,17 @@ function config_lspconfig.on_attach (_, bufnr)
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>',
 		   opts)
-    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>',
+    buf_set_keymap('n', '<space>f', '<cmd>LspFormat<CR>',
 		   opts)
 
 end
 
-return config_lspconfig
+local function default_options_generator()
+    return {
+        on_attach = default_on_attach,
+        flags = { debounce_text_changes = 150 },
+    }
+end
+
+return default_options_generator
+
