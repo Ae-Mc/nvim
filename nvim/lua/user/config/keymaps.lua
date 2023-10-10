@@ -13,6 +13,7 @@ end
 local function nmap(lhs, rhs, opts)
     vim.api.nvim_set_keymap('n', lhs, rhs, prepare_opts(opts))
 end
+---@diagnostic disable-next-line: unused-function,unused-local
 local function tmap(lhs, rhs, opts)
     vim.api.nvim_set_keymap('t', lhs, rhs, prepare_opts(opts))
 end

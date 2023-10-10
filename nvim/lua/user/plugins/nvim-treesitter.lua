@@ -5,11 +5,22 @@ if vim.fn.has('win32') == 1 then
 end
 
 require'nvim-treesitter.configs'.setup {
-    -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = "maintained",
+    -- A list of parser names, or "all"
+    ensure_installed = {
+        "bash", "c", "c_sharp", "cmake", "cpp", "css", "dart", "diff",
+        "dockerfile", "git_rebase", "gitattributes", "go", "html", "java",
+        "javascript", "jsdoc", "json", "json5", "jsonc", "julia", "kotlin",
+        "lua", "make", "markdown", "markdown_inline", "ninja", "pascal", "perl",
+        "php", "phpdoc", "python", "r", "regex", "rst", "ruby", "rust", "scala",
+        "scss", "sql", "toml", "typescript", "vim", "vue", "yaml"
+    },
 
     -- Install languages synchronously (only applied to `ensure_installed`)
     -- sync_install = false,
+
+    -- Automatically install missing parsers when entering buffer
+    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+    auto_install = true,
 
     -- List of parsers to ignore installing
     -- ignore_install = { "javascript" },
