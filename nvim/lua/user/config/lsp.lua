@@ -4,7 +4,7 @@
 
 -- Servers to be installed. List of all servers could be found in
 -- nvim-lsp-installer repo
-local servers = {'sumneko_lua', 'efm', 'pyright'}
+local servers = {'lua_ls', 'efm', 'pyright'}
 
 --- @type table<string, fun(opts:string):nil>
 local language_server_options_modifiers = {
