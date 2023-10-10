@@ -25,9 +25,7 @@ if not (installer_ok and cmp_ok and lsp_ok) then
     return
 end
 
-local capabilities = cmp_nvim_lsp.update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Create on_server_ready event listener
 lsp_installer.on_server_ready(function (server)
