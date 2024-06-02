@@ -1,5 +1,5 @@
 local cmp = require('cmp')
-local gui = require('user.config.gui')
+-- local gui = require('user.config.gui')
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
@@ -15,7 +15,7 @@ cmp.setup({
     },
     formatting = {
         format = function (entry, vim_item)
-            vim_item.kind = string.format('%s %s', gui.icons[vim_item.kind], vim_item.kind)
+            -- vim_item.kind = string.format('%s %s', gui.icons[vim_item.kind], vim_item.kind)
             return vim_item
         end
     },

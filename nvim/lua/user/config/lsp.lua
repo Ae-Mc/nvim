@@ -4,13 +4,18 @@
 
 -- Servers to be installed. List of all servers could be found in
 -- mason-lspconfig repo
-local servers = {'lua_ls', 'efm', 'pyright', 'clangd'}
+local servers = {
+    'lua_ls',
+    'efm',
+    'pyright',
+    'gopls',
+}
 
 --- @type table<string, fun(opts:table):nil>
 local language_server_options_modifiers = {
-    sumneko_lua = require('user.config.lsp-configurations.sumneko_lua'),
     efm = require('user.config.lsp-configurations.efm'),
     pyright = require('user.config.lsp-configurations.pyright'),
+    clangd = require('user.config.lsp-configurations.clangd'),
 }
 local default_options_generator = (
     require('user.config.lsp-configurations.default_options_generator'))
@@ -59,3 +64,4 @@ mason_lspconfig.setup_handlers({
         end
     end
 })
+lspconfig.clangd.setup{}
