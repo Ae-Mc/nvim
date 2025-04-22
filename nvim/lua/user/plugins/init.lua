@@ -37,6 +37,14 @@ require("lazy").setup({
         config = function() require('user.plugins.nvim-cmp') end
     },
 
+    -- AI
+    {
+      'Exafunction/codeium.vim',
+      enabled = false,
+      event = 'BufEnter',
+      config = function() end
+    },
+
     -- Автоматические закрывающие скобки, кавычки и т.п.
     {
         'windwp/nvim-autopairs',
@@ -46,7 +54,7 @@ require("lazy").setup({
     {
       "folke/trouble.nvim",
       dependencies = "nvim-tree/nvim-web-devicons",
-      opts = { auto_open = true, mode = 'document_diagnostics' },
+      opts = { mode = 'document_diagnostics' },
     },
 
     ---------------------------------------------------------------------------
@@ -92,7 +100,7 @@ require("lazy").setup({
     {
         'nvim-treesitter/nvim-treesitter',
         -- build = ':TSUpdate',
-        enabled = false,
+        -- enabled = false,
         config = function() require('user.plugins.nvim-treesitter') end
     },
 
@@ -123,7 +131,14 @@ require("lazy").setup({
     -- Плагин для простого комментирования блоков/строк кода
     {
         'numToStr/Comment.nvim',
-        config = true,
+        opts = {
+            toggler = {
+                line = '<C-_>'
+            },
+            opleader = {
+                line = '<C-_>'
+            }
+        }
     },
 
     -- Автоматическое изменение размеров текущего окна (split'а)

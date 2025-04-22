@@ -5,7 +5,6 @@
 -- Servers to be installed. List of all servers could be found in
 -- mason-lspconfig repo
 local servers = {
-    'lua_ls',
     'efm',
     'pyright',
     'gopls',
@@ -34,6 +33,7 @@ local mason_ok, mason = pcall(require, 'mason')
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
 local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
+
 
 if not (mason_ok
         and mason_lspconfig_ok
@@ -64,4 +64,5 @@ mason_lspconfig.setup_handlers({
         end
     end
 })
-lspconfig.clangd.setup{}
+lspconfig.clangd.setup(default_options_generator()) -- install clangd on host
+lspconfig.lua_ls.setup(default_options_generator()) -- install lua-language-server on host
